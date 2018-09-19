@@ -7,31 +7,37 @@ var Queue = function() {
   // Use an object with numeric keys to store values
   var storage = {};
 
-  var last;
-  var newest
-  var count = 0;
+  var last = 0
+  var newest = 0
 
   // Implement the methods below
 
   //adds data to the queue
   someInstance.enqueue = function(value) {
-    storage[count] = value;
-    newest = storage[count];
-    count ++;
+    storage[last] = value;
+    console.log(last + '  last')
+    //dis way last points to the next empty place to be filled
+    //we don't want it to the point to the current occupied space
+    last ++;
   };
 
   //removes data from the queue
   someInstance.dequeue = function() {
-    if (count > 0) {
-    count --;
-    var last = storage[count];
-    delete storage[count];
-    return last;
+    //need to compare queue size
+    if (last > newest) {
+      //assign storage[newest] to data
+      var data = storage[newest]
+      //now we delete the newest data
+      delete storage[newest];
+    //incremement newest because last index (0) has now been deleted
+    newest ++;
+    //return newest via the variable we stored it in!
+    return data;
     }
   };
 
   someInstance.size = function() {
-    return count;
+    return last - newest;
   };
 
   return someInstance;
