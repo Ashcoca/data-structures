@@ -13,7 +13,6 @@ var Stack = function() {
     storage[count] = value;
     //count needs to be below?
     count ++;
-
   };
 
   someInstance.pop = function() {
