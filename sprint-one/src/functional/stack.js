@@ -24,7 +24,7 @@ var Stack = function() {
     //now remove that last item from the storage
     delete storage[count];
     return popped
-    // return storage;
+    //do NOT return storage;
     }
   };
 
