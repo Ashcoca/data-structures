@@ -1,9 +1,11 @@
-var Stack = function(storage, count) {
+var Stack = function() {
   //create an object with all our editeable values
   var someInstance = {
-    storage: {},
-    count: 0
+
   };
+
+  someInstance.storage = {},
+  someInstance.count = 0
 
   extend(someInstance, stackMethods)
   return someInstance;

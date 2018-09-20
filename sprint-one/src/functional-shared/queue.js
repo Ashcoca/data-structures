@@ -19,16 +19,23 @@ var extend = function(obj, methods) {
 var queueMethods = {
 
   enqueue: function(value) {
+    //set this.storage[last] to the passed in value
     this.storage[this.last] = value;
+    //increment last so the next item
     this.last++
 
   },
 
   dequeue: function() {
+    //dequeue only gets invoked if last > 0
     if(this.last > this.newest) {
+      //save the value of the newest item in data
       var data = this.storage[this.newest];
+      //delete that item
       delete this.storage[this.newest];
+      //increment newest since the last index has been removed
       this.newest++;
+      //return the removed element
       return data;
     }
   },
