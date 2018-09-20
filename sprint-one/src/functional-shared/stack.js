@@ -1,11 +1,10 @@
-var Stack = function(count) {
+var Stack = function(storage, count) {
   var someInstance = {
     storage: {},
     count: 0
   };
 
   extend(someInstance, stackMethods)
-
   return someInstance;
 };
 
@@ -26,8 +25,8 @@ var stackMethods = {
 
   pop: function(){
     if (this.size() > 0) {
-      var result = this.storage[this.length - 1];
-      delete this.storage[this.length - 1];
+      var result = this.storage[this.count - 1];
+      delete this.storage[this.count - 1];
       this.count --;
       return result;
     }
