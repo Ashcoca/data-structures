@@ -1,8 +1,6 @@
 var Stack = function() {
   //create an object with all our editeable values
-  var someInstance = {
-
-  };
+  var someInstance = {};
 
   someInstance.storage = {},
   someInstance.count = 0
