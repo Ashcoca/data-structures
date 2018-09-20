@@ -1,5 +1,6 @@
 class Stack {
-
+  //we use a constructor method b/c it gets called automatically so we can't
+  // forget to initialize our objects
   constructor(storage, count) {
 
     this.storage = {};
