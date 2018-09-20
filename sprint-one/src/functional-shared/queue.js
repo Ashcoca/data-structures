@@ -23,7 +23,6 @@ var queueMethods = {
     this.storage[this.last] = value;
     //increment last so the next item
     this.last++
-
   },
 
   dequeue: function() {
@@ -43,6 +42,4 @@ var queueMethods = {
   size: function() {
     return this.last - this.newest;
   }
-
-
 };
