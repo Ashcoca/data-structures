@@ -15,7 +15,6 @@ console.log
   list.addToTail = function(value) {
     if (list.tail == null) {
       list.tail = Node(value)
-      console.log(list + ' line 18')
     } else {
       var data = list.tail;
       list.head = data;
@@ -26,6 +25,7 @@ console.log
       // var data = list.tail.next
       // list.tail.next = '5'
       list.tail = Node(value)
+      list.head.next = list.tail
     }
   //else var data = list.tail
   //list.tail = Node(value)
@@ -41,11 +41,15 @@ console.log
   };
 
   list.removeHead = function() {
+    var temp = list.head.next
+    delete list.head;
+    list.head = temp;
+    return temp;
     // if (list.head == null) {
     //   list.head = Node(list.tail)
     // }
     // var newHead = list.head.next;
-    // // delete list.head;
+    // delete list.head;
     // // return newHead;
         
     
