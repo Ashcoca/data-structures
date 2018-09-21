@@ -9,11 +9,28 @@ var LinkedList = function() {
   list.head = null;
   list.tail = null;
 
-_.extend(list, Node);
+//  
+console.log
 
   list.addToTail = function(value) {
-    list.Node.node.value = value;
-    console.log(list.Node.node);
+    if (list.tail == null) {
+      list.tail = Node(value)
+      console.log(list + ' line 18')
+    } else {
+      var data = list.tail;
+      list.head = data;
+      // list.head.next = list.tail;
+      
+      
+      //this list.tail refers to the previous time addtoTail was run
+      // var data = list.tail.next
+      // list.tail.next = '5'
+      list.tail = Node(value)
+    }
+  //else var data = list.tail
+  //list.tail = Node(value)
+    
+
     //conditional see if list.tail is null
       //add current node.value to var
       //add value to node
@@ -24,6 +41,14 @@ _.extend(list, Node);
   };
 
   list.removeHead = function() {
+    // if (list.head == null) {
+    //   list.head = Node(list.tail)
+    // }
+    // var newHead = list.head.next;
+    // // delete list.head;
+    // // return newHead;
+        
+    
   };
 
   list.contains = function(target) {
@@ -32,8 +57,8 @@ _.extend(list, Node);
   //figure way to step through 1 by 1 otherwise?
   };
 
-
   return list;
+
 };                                           
 
 
@@ -43,7 +68,6 @@ _.extend(list, Node);
 //previous node
 var Node = function(value) {
   var node = {};
-
   node.value = value;
   node.next =  null;
 
