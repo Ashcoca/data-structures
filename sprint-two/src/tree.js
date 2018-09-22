@@ -2,9 +2,9 @@ var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
 
-  // your code here
   newTree.children = [];
 
+  //extend treeMethods over ever newTree object
   _.extend(newTree, treeMethods);
 
   return newTree;
@@ -16,32 +16,44 @@ var Tree = function(value) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  var child = {};
-  child.value = value;
+  var child = Tree(value);
   this.children.push(child);
 };
 
+
+
+
+
 treeMethods.contains = function(target) {
-  for (var i = 0; i < this.children.length; i ++) {
-    if (this.children[i].value === target) {
-      return true;
-    }
-    return false;
+
+  var babies = this;
+  
+  if (babies.value === target) {
+    return true;
   }
 
-};
+  var result = false;
 
-//start with root
-//determine if node needs to go in left or right branch
-//each node needs to point at the next child
-//how do we figure when to make a child vs a sibling?
+  var helper = function(array) {
+    
+    for (var i = 0; i < array.length; i++) {
+      if (result === true) {
+        return result;
+      }
+      if (array[i].value === target) {
+        result = true;
+      } else {
+        helper(array[i].children);
+      }
+    }
+  };
+  helper(babies.children); 
+  return result; 
+}; 
 
-//every node has a left node and a right node
-//some of those children nodes will be null
 
-//this note below refers to binary search trees
-//left node is less than the root node *and* less than all of the right nodes
-//
+
+
 
 
 /*
