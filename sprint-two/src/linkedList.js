@@ -15,55 +15,53 @@ console.log
   list.addToTail = function(value) {
     if (list.tail == null) {
       list.tail = Node(value)
+      list.head = list.tail;
     } else {
-      var data = list.tail;
-      list.head = data;
-      // list.head.next = list.tail;
-      
-      
-      //this list.tail refers to the previous time addtoTail was run
-      // var data = list.tail.next
-      // list.tail.next = '5'
-      list.tail = Node(value)
-      list.head.next = list.tail
+      //so we take the previous tail and save it in a variable
+       var data = list.tail;
+      //then we make a new tail by invoking Node on the passed value
+       list.tail = Node(value)
+      //then we update the next property of the PREVIOUS tail and point it to the
+      //new tail we just created
+       data.next = list.tail
     }
-  //else var data = list.tail
-  //list.tail = Node(value)
-    
 
-    //conditional see if list.tail is null
-      //add current node.value to var
-      //add value to node
-      //change node.next to previous node.value
-    //conditional see if list.head is null
-      //add value to node
-      //
+
   };
 
   list.removeHead = function() {
-    var temp = list.head.next
-    delete list.head;
-    list.head = temp;
-    return temp;
-    // if (list.head == null) {
-    //   list.head = Node(list.tail)
-    // }
-    // var newHead = list.head.next;
-    // delete list.head;
-    // // return newHead;
+    var oldHead = list.head;
+    list.head = list.head.next
+    return oldHead.value;
+
         
     
   };
 
   list.contains = function(target) {
   //maybe loop through list to see if target is in there?
-  //return true if it is?
-  //figure way to step through 1 by 1 otherwise?
-  };
+  //recurse till we hit next = null
+  //return boolean
+  //figure way to step through 1 by 1 otherwise
+  var node = list.head;
 
-  return list;
+  var helper = function(node, target) {
 
-};                                           
+    if (node.value === target) {
+      return true;
+    } else if (node.next == null) {
+      return false;
+    } else {
+      return helper(node.next, target);
+    }
+  }
+
+  return helper(node, target)  
+  }
+
+return list;
+
+};                                        
 
 
 //we can assign head and tail to different nodes
