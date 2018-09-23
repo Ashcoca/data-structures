@@ -62,14 +62,31 @@ BinarySearchTree.prototype.contains = function(target) {
 };
 
 
-BinarySearchTree.prototype.depthFirstLog = function(value) {
+BinarySearchTree.prototype.depthFirstLog = function(func) {
+  //create our methods that we want
+  //insert, contains
+  //depthfirstlog - callback that is applied to every value in tree
+  var node = this;
+  
+  var helper = function(parent) {
+    //call our iterator on parent.value to start
+    func(parent.value);
 
+    //exit case if parent.left doesn't exist
+    if (parent.left) {
+      helper(parent.left);
+    }
+
+    if (parent.right) {
+      helper(parent.right);
+    }
+
+  };
+  //initially call helper on node (which is this aka the root node)
+  helper(node);
 };
 
 
-//create our methods that we want
-//insert, contains
-//depthfirstlog - callback that is applied to every value in tree
 
 /*
  * Complexity: What is the time complexity of the above functions?
